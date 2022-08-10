@@ -1,38 +1,14 @@
 import './style.css';
 
-import { of, map, Observable, Subject } from 'rxjs';
+import { exampleObservable } from './Rxjs/observable';
+import { exampleSubject } from './Rxjs/subject';
+import { exampleBehaviorSubject } from './Rxjs/behaviorSubject';
+import { exampleOf } from './Rxjs/of';
 
-of('World')
-  .pipe(map((name) => `Hello, ${name}!`))
-  .subscribe(console.log);
+// exampleOf();
 
-let subject = new Subject();
+//  exampleObservable();
 
-let observable = () => {
-  return new Observable((subscribe) => {
-    subscribe.next('holeeeeeeee');
-    subscribe.error('xdddd');
-    subscribe.complete();
-  });
-};
+//  exampleSubject();
 
-observable().subscribe({
-  next: (a) => console.log(a),
-  error: (a) => console.log(a),
-  complete: () => console.log('finish'),
-});
-
-subject.next('1');
-
-console.log(subject.observed);
-
-subject.subscribe({
-  next: (a) => console.log(a),
-});
-
-subject.next('2');
-subject.next('3');
-
-console.log(subject.observed);
-
-// Open the console in the bottom right to see results.
+exampleBehaviorSubject();
